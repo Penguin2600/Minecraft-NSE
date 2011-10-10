@@ -1,0 +1,19 @@
+====Usage====
+1 ] Place minecraft.nse in /usr/share/nmap/scripts/
+
+2 ] Run sudo nmap --script-updatedb
+
+3 ] Run nmap like nmap --script="minecraft" [target] -p 25565 -Pn -n
+
+
+====How does it work====
+
+The script will use Nmap sockets to execute a "Handshake" with the minecraft server.
+
+Client --> Server: 5 Bytes
+|Type|Empty|Name Length|Empty|Name|
+ 0x02 0x00     0x01     0x00  0x00
+
+The server then sends back a unique session ID which verifies that it is indeed a minecraft server.
+
+
